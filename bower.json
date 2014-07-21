@@ -1,0 +1,17 @@
+{
+	"name": "kenburnsy",
+	"version": "0.0.1",
+	"homepage": "https://github.com/ZeroOneStudio/kenburnsy",
+	"authors": [
+		"Michael Romanenko <michael@romanenko.kg>",
+		"Sergey Kishenin <sergey.kishenin@gmail.com>"
+	],
+	"description": "Easy to use JQuery plugin to make slideshows with Ken Burns effect",
+	"main": "src/jquery.kenburnsy.js",
+	"keywords": [
+		"jquery",
+		"plugin",
+		"kenburns"
+	],
+	"license": "MIT"
+}

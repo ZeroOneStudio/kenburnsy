@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Fullscreen — Kenburnsy</title>
+
+		<link rel="stylesheet" href="./assets/demo.css">
+		<link rel="stylesheet" href="../src/jquery.kenburnsy.css">
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="../src/jquery.imagesloaded.js"></script>
+		<script src="../src/jquery.velocity.js"></script>
+		<script src="../src/jquery.kenburnsy.js"></script>
+	</head>
+	<body>
+	
+		<div id="element">
+			<img src="./assets/img1.jpg" alt="">
+			<img src="./assets/img3.jpg" alt="">
+			<img src="./assets/img2.jpg" alt="">
+			
+		</div>
+
+		<script>
+			$(function() {
+				$("#element").kenburnsy({
+					fullscreen: true
+				});
+			});
+		</script>
+
+	</body>
+</html>

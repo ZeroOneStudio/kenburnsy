@@ -1,0 +1,40 @@
+{
+  "name": "kenburnsy",
+  "title": "Simple Ken Burns slideshow",
+  "description": "Easy to use JQuery plugin to make slideshows with Ken Burns effect",
+  "keywords": [
+    "jquery",
+    "kenburns",
+    "plugins"
+  ],
+  "version": "0.0.1",
+  "author": {
+    "name": "Zero.One",
+    "email": "we.are@zeroone.st",
+    "url": "https://github.com/ZeroOneStudio"
+  },
+  "maintainers": [
+    {
+      "name": "Michael Romanenko",
+      "email": "michael@romanenko.kg",
+      "url": "https://github.com/romanenko"
+    },
+    {
+      "name": "Sergey Kishenin",
+      "email": "sergey.kishenin@gmail.com",
+      "url": "https://github.com/SergeyKishenin"
+    }
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://zeroone.mit-license.org/"
+    }
+  ],
+  "bugs": "https://github.com/ZeroOneStudio/kenburnsy/issues",
+  "docs": "https://github.com/ZeroOneStudio/kenburnsy#readme",
+  "download": "https://github.com/ZeroOneStudio/kenburnsy/archive/master.zip",
+  "dependencies": {
+    "jquery": ">=1.4"
+  }
+}
