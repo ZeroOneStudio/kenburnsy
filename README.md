@@ -1,5 +1,5 @@
-# Simple Ken Burns slideshow
+# Kenburnsy
 
-### Easy to use JQuery plugin to make slideshows with Ken Burns effect
+Simple JQuery plugin to make slideshows with Ken Burns effect.
 
-Proof of concept. Work in progress!
+## Proof of concept. Work in progress!
