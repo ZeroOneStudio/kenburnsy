@@ -43,7 +43,8 @@
 
     $.extend(Plugin.prototype, {
       init: function () {
-        var settings = this.settings;
+        var settings = this.settings,
+            deferreds;
 
         this.$el.addClass(function () {
           var classes = [pluginName];
@@ -55,16 +56,25 @@
 
         images = this.$el
           .children()
-          .map(function () {
-            return $(this).prop('src');
+          .map(function (i, imageEl) {
+            return $(imageEl).prop('src');
           })
-          .map(function () {
+          .map(function (i, imageURL) {
             var proxyImage = new Image();
-            proxyImage.src = this;
+            proxyImage.src = imageURL;
             return proxyImage;
           });
 
-        this.$el.imagesLoaded(this.buildScene.bind(this));
+        deferreds = images.map(function (i, imageEl) {
+          var promise;
+
+          return promise = new jQuery.Deferred(function () {
+            imageEl.onload = this.resolve;
+          });
+        });
+
+        // TODO: Remove need of "binding" buildScene()
+        $.when(deferreds).done(this.buildScene.bind(this));
       },
 
       revealSlide: function (slide) {
@@ -103,10 +113,15 @@
           });
         }
 
+        // TODO: Remove need of "binding" next()
+        // TODO: Play just animation first — then start loop with revealing next slide
         this.next();
-        setInterval(this.next.bind(this), (this.settings.duration - this.settings.fadeInDuration) );
+        setInterval( this.next.bind(this), (this.settings.duration - this.settings.fadeInDuration) );
       }
     });
+
+
+
 
     // A really lightweight plugin wrapper around the constructor,
     // preventing against multiple instantiations
