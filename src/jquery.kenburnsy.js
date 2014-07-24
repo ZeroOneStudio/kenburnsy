@@ -10,7 +10,6 @@
     // Private properties
     //
     var 
-      index = 0,
       images = [],
       slides = [],
       transitions = {
@@ -61,6 +60,7 @@
       this.settings = $.extend({}, defaults, options);
       this._defaults = defaults;
       this._name = pluginName;
+      this.index = 0;
       this.init();
     }
 
@@ -99,14 +99,19 @@
         }).velocity('fadeIn', { duration: this.settings.fadeInDuration, queue: false });
       },
 
-      next: function () {
+      show: function (index) {
         var keys = Object.keys(transitions),
             transition = transitions[keys[keys.length * Math.random() << 0]],
-            duration = this.settings.duration;
+            duration = this.settings.duration,
+            slide = slides[index];
 
-        this.revealSlide(slides[index]);
-        transition(slides[index], duration);
-        index = index === slides.length - 1 ? 0 : index + 1;
+        this.revealSlide(slide);
+        transition(slide, duration);
+      },
+
+      next: function () {
+        this.index = this.index === slides.length - 1 ? 0 : this.index + 1;
+        this.show(this.index);
       },
 
       buildScene: function () {
@@ -133,7 +138,7 @@
 
         // TODO: Remove need of "binding" next()
         // TODO: Play just animation first — then start loop with revealing next slide
-        this.next();
+        this.show(0);
         setInterval( this.next.bind(this), (this.settings.duration - this.settings.fadeInDuration) );
       }
     });
