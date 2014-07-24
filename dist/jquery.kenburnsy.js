@@ -11,8 +11,10 @@
         defaults = {
           fullscreen: false,
           duration: 9000,
-          fadeInDuration: 1500
-    };
+          fadeInDuration: 1500,
+          width: null,
+          height: null
+        };
 
     //
     // Private properties
@@ -55,7 +57,7 @@
         var promise;
 
         return promise = new jQuery.Deferred(function () {
-          imageEl.onload = this.resolve;
+          imageEl.addEventListener('load', this.resolve);
         });
       });
 
@@ -138,10 +140,9 @@
         });
 
         if (!this.settings.fullscreen) {
-          this.$el.css({
-            width: this.settings.width || (images[0].width + 'px'),
-            height: this.settings.height || (images[0].height + 'px')
-          });
+          // TODO: For some reason dimensions appears to be 0 in Safari sometimes
+          this.$el.width(this.settings.width || images[0].naturalWidth || images[0].width);
+          this.$el.height(this.settings.height || images[0].naturalheight || images[0].height);
         }
 
         // TODO: Remove need of "binding" next()

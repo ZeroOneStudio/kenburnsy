@@ -1,7 +1,7 @@
 {
   "private": true,
   "dependencies": {
-    "jquery": "~1.11.*",
+    "jquery": ">=1.4",
     "velocity-animate": "~0.9"
   },
   "devDependencies": {
