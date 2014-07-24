@@ -30,6 +30,7 @@
               scale: '1.1'
             }, 0)
             .velocity({
+              translateZ: 0,
               rotateZ: '0deg',
               scale: '1'
             }, duration);
@@ -41,6 +42,7 @@
               scale: '1'
             }, 0)
             .velocity({
+              translateZ: 0,
               rotateZ: '3deg',
               scale: '1.1'
             }, duration);
@@ -104,9 +106,9 @@
       revealSlide: function (slide) {
         var $el = this.$el;
 
-        $(slide).velocity({ opacity: 0 }, 0, function () {
+        $(slide).velocity({ opacity: 0}, 0, function () {
           $(this).appendTo($el);
-        }).velocity('fadeIn', { duration: this.settings.fadeInDuration, queue: false });
+        }).velocity({ opacity: 1, translateZ: 0 }, { duration: this.settings.fadeInDuration, queue: false });
       },
 
       show: function (index) {

@@ -1,5 +1,8 @@
 {
-  "private": true,
+  "name": "kenburnsy",
+  "version": "0.0.3",
+  "description": "Easy to use JQuery plugin to make slideshows with Ken Burns effect",
+  "main": "dist/jquery.kenburnsy.js",
   "dependencies": {
     "jquery": ">=1.4",
     "velocity-animate": "~0.9"
@@ -14,5 +17,21 @@
   },
   "scripts": {
     "test": "grunt travis --verbose"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/ZeroOneStudio/kenburnsy.git"
+  },
+  "keywords": [
+    "slideshow",
+    "jquery",
+    "plugin",
+    "kenburns"
+  ],
+  "author": "Zero.One",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ZeroOneStudio/kenburnsy/issues"
+  },
+  "homepage": "https://github.com/ZeroOneStudio/kenburnsy"
 }
