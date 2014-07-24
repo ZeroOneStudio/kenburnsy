@@ -11,7 +11,7 @@
       images = [],
       slides = [],
       transitions = {
-        default: function (slide, duration) {
+        zoomOut: function (slide, duration) {
           $(slide)
             .velocity({
               rotateZ: '3deg',
@@ -20,6 +20,17 @@
             .velocity({
               rotateZ: '0deg',
               scale: '1'
+            }, duration);
+        },
+        zoomIn: function (slide, duration) {
+          $(slide)
+            .velocity({
+              rotateZ: '0deg',
+              scale: '1'
+            }, 0)
+            .velocity({
+              rotateZ: '3deg',
+              scale: '1.1'
             }, duration);
         }
       };
@@ -78,8 +89,12 @@
       },
 
       next: function () {
+        var keys = Object.keys(transitions),
+            transition = transitions[keys[keys.length * Math.random() << 0]],
+            duration = this.settings.duration;
+
         this.revealSlide(slides[index]);
-        transitions['default'](slides[index], this.settings.duration);
+        transition(slides[index], duration);
         index = index === slides.length - 1 ? 0 : index + 1;
       },
 
