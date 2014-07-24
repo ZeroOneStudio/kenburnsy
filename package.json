@@ -1,5 +1,9 @@
 {
   "private": true,
+  "dependencies": {
+    "jquery": "~1.11.*",
+    "velocity-animate": "~0.9"
+  },
   "devDependencies": {
     "grunt": "~0.4.5",
     "grunt-cli": "~0.1.13",
