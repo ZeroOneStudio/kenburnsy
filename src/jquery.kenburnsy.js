@@ -6,6 +6,9 @@
           fadeInDuration: 1500
     };
 
+    //
+    // Private properties
+    //
     var 
       index = 0,
       images = [],
@@ -35,6 +38,23 @@
         }
       };
 
+    //
+    // Private methods
+    //
+    var preloadImages = function (images, callback) {
+      var deferreds;
+
+      deferreds = images.map(function (i, imageEl) {
+        var promise;
+
+        return promise = new jQuery.Deferred(function () {
+          imageEl.onload = this.resolve;
+        });
+      });
+
+      $.when(deferreds).done(callback);
+    };
+
     function Plugin (element, options) {
       this.el = element;
       this.$el = $(element);
@@ -46,8 +66,7 @@
 
     $.extend(Plugin.prototype, {
       init: function () {
-        var settings = this.settings,
-            deferreds;
+        var settings = this.settings;
 
         this.$el.addClass(function () {
           var classes = [pluginName];
@@ -68,16 +87,8 @@
             return proxyImage;
           });
 
-        deferreds = images.map(function (i, imageEl) {
-          var promise;
-
-          return promise = new jQuery.Deferred(function () {
-            imageEl.onload = this.resolve;
-          });
-        });
-
         // TODO: Remove need of "binding" buildScene()
-        $.when(deferreds).done(this.buildScene.bind(this));
+        preloadImages(images, this.buildScene.bind(this));
       },
 
       revealSlide: function (slide) {
