@@ -36,7 +36,19 @@ module.exports = function(grunt) {
     jshint: {
       files: ["src/jquery.kenburnsy.js"],
       options: {
-        jshintrc: ".jshintrc"
+        "boss": true,
+        "curly": true,
+        "eqeqeq": true,
+        "eqnull": true,
+        "expr": true,
+        "immed": true,
+        "noarg": true,
+        "onevar": true,
+        "quotmark": "single",
+        "smarttabs": true,
+        "trailing": true,
+        "unused": true,
+        "node": true
       }
     },
 
