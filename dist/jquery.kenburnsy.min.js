@@ -1,5 +1,5 @@
 /*
- *  Simple Ken Burns slideshow - v0.0.1
+ *  Kenburnsy - v0.0.1
  *  Easy to use JQuery plugin to make slideshows with Ken Burns effect
  *  
  *
