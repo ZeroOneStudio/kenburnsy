@@ -139,7 +139,7 @@
         }
 
         // TODO: Remove need of "binding" next()
-        // TODO: Play just animation first — then start loop with revealing next slide
+        // TODO: Play just animation, then start loop with revealing next slide
         this.show(0);
         setInterval( this.next.bind(this), (this.settings.duration - this.settings.fadeInDuration) );
       }

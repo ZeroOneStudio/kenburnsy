@@ -1,10 +1,8 @@
-/*
- *  Kenburnsy - v0.0.3
- *  Easy to use JQuery plugin to make slideshows with Ken Burns effect
- *  
- *
- *  Made by Zero.One
- *  Under MIT License
+/**
+ * kenburnsy - Easy to use JQuery plugin to make slideshows with Ken Burns effect
+ * @version v0.0.3
+ * @link https://github.com/ZeroOneStudio/kenburnsy
+ * @license MIT
  */
 ;(function ( $, window, document, undefined ) {
     var pluginName = 'kenburnsy',
@@ -147,7 +145,7 @@
         }
 
         // TODO: Remove need of "binding" next()
-        // TODO: Play just animation first — then start loop with revealing next slide
+        // TODO: Play just animation, then start loop with revealing next slide
         this.show(0);
         setInterval( this.next.bind(this), (this.settings.duration - this.settings.fadeInDuration) );
       }
