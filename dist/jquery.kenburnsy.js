@@ -1,5 +1,5 @@
 /*
- *  Kenburnsy - v0.0.2
+ *  Kenburnsy - v0.0.3
  *  Easy to use JQuery plugin to make slideshows with Ken Burns effect
  *  
  *
@@ -56,11 +56,10 @@
       var deferreds;
 
       deferreds = images.map(function (i, imageEl) {
-        var promise;
-
-        return promise = new jQuery.Deferred(function () {
+        var promise = new jQuery.Deferred(function () {
           imageEl.addEventListener('load', this.resolve);
         });
+        return promise;
       });
 
       $.when(deferreds).done(callback);
@@ -106,14 +105,14 @@
       revealSlide: function (slide) {
         var $el = this.$el;
 
-        $(slide).velocity({ opacity: 0}, 0, function () {
+        $(slide).velocity({ opacity: 0 }, 0, function () {
           $(this).appendTo($el);
         }).velocity({ opacity: 1, translateZ: 0 }, { duration: this.settings.fadeInDuration, queue: false });
       },
 
       show: function (index) {
         var keys = Object.keys(transitions),
-            transition = transitions[keys[keys.length * Math.random() << 0]],
+            transition = transitions[keys[Math.floor(keys.length * Math.random())]],
             duration = this.settings.duration,
             slide = slides[index];
 

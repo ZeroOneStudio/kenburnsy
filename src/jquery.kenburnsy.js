@@ -48,11 +48,10 @@
       var deferreds;
 
       deferreds = images.map(function (i, imageEl) {
-        var promise;
-
-        return promise = new jQuery.Deferred(function () {
+        var promise = new jQuery.Deferred(function () {
           imageEl.addEventListener('load', this.resolve);
         });
+        return promise;
       });
 
       $.when(deferreds).done(callback);
@@ -105,7 +104,7 @@
 
       show: function (index) {
         var keys = Object.keys(transitions),
-            transition = transitions[keys[keys.length * Math.random() << 0]],
+            transition = transitions[keys[Math.floor(keys.length * Math.random())]],
             duration = this.settings.duration,
             slide = slides[index];
 
