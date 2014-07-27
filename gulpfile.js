@@ -43,7 +43,7 @@ gulp.task('build', ['jshint'], function () {
     .pipe(prefix('last 1 version', '> 1%', 'ie 8', 'ie 7'))
     .pipe(header(banner, { pkg: pkg } ))
     .pipe(gulp.dest('./dist/'));
-})
+});
 
 gulp.task('default', ['jshint', 'build']);
 

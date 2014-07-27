@@ -7,8 +7,7 @@
           height: null
         };
 
-    var 
-      _transitions = {
+    var _transitions = {
         zoomOut: function (slide, duration) {
           $(slide)
             .velocity({
@@ -184,7 +183,7 @@
 
       /**
        *
-       * buildScene() clears el node and stats animation loop
+       * buildScene() clears contents of el node and starts animation loop
        * @param <Array>, images
        *
       */
