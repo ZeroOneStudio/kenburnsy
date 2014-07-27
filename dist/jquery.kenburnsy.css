@@ -1,12 +1,13 @@
 /**
  * kenburnsy - Easy to use JQuery plugin to make slideshows with Ken Burns effect
- * @version v0.0.3
+ * @version v0.0.4
  * @link https://github.com/ZeroOneStudio/kenburnsy
  * @license MIT
  */
 .kenburnsy {
   position: relative;
   overflow: hidden;
+  width: 100%;
 }
 
 .kenburnsy.fullscreen {

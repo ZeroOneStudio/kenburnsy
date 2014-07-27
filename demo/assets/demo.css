@@ -1,8 +1,15 @@
-html, body {
-  height: 100%;
-}
 
 body {
   padding: 0;
   margin: 0;
+}
+
+.container {
+  width: 90%;
+  min-width: 600px;
+  margin: 0 auto;
+}
+
+h1 {
+  color: #fff;
 }
