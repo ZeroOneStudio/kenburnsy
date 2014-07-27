@@ -15,14 +15,20 @@ var banner = ['/**',
   ' */',
   ''].join('\n');
 
-gulp.task('default', function () {
+gulp.task('jshint', function () {
+  var stream = gulp.src('./src/*.js')
+    .pipe(jshint({ lookup: true }))
+    .pipe(jshint.reporter(stylish))
+    .pipe(jshint.reporter('fail'));
+
+  return stream;
+});
+
+gulp.task('build', ['jshint'], function () {
   // 
   // Uglify and add banner to javascript files
   // 
   gulp.src('./src/*.js')
-    .pipe(jshint({ lookup: true }))
-    .pipe(jshint.reporter(stylish))
-    .pipe(jshint.reporter('fail'))
     .pipe(header(banner, { pkg: pkg } ))
     .pipe(gulp.dest('./dist/'))
     .pipe(uglify())
@@ -34,14 +40,11 @@ gulp.task('default', function () {
   // Autoprefix and add banner to css files
   // 
   gulp.src('./src/*.css')
-    .pipe(prefix("last 1 version", "> 1%", "ie 8", "ie 7"))
+    .pipe(prefix('last 1 version', '> 1%', 'ie 8', 'ie 7'))
     .pipe(header(banner, { pkg: pkg } ))
     .pipe(gulp.dest('./dist/'));
-});
+})
 
-gulp.task('travis', function () {
-  gulp.src('./src/*.js')
-    .pipe(jshint({ lookup: true }))
-    .pipe(jshint.reporter(stylish))
-    .pipe(jshint.reporter('fail'));
-});
+gulp.task('default', ['jshint', 'build']);
+
+gulp.task('travis', ['jshint']);
