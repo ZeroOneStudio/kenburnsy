@@ -13,9 +13,9 @@
 .kenburnsy.fullscreen {
   position: absolute;
   top: 0;
-  left: 0;
   right: 0;
   bottom: 0;
+  left: 0;
   z-index: -1;
 }
 
@@ -26,22 +26,16 @@
 .kenburnsy .slide {
   position: absolute;
   top: 0;
-  left: 0;
   right: 0;
   bottom: 0;
-
-  background-repeat: no-repeat;
+  left: 0;
   background-position: center center;
   -webkit-background-size: cover;
           background-size: cover;
-
-  -webkit-transform-origin: center;
-
-      -ms-transform-origin: center;
-
-          transform-origin: center;
-
+  background-repeat: no-repeat;
   -webkit-transform: translateZ(0);
-
           transform: translateZ(0);
+  -webkit-transform-origin: center;
+      -ms-transform-origin: center;
+          transform-origin: center;
 }

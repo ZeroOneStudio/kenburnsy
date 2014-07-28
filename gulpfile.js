@@ -2,9 +2,10 @@ var gulp = require('gulp'),
     header = require('gulp-header'),
     rename = require('gulp-rename'),
     uglify = require('gulp-uglify'),
-    prefix = require('gulp-autoprefixer'),
     jshint = require('gulp-jshint'),
     stylish = require('jshint-stylish'),
+    csscomb = require('gulp-csscomb'),
+    prefix = require('gulp-autoprefixer'),
     pkg = require('./package.json');
 
 var banner = ['/**',
@@ -41,6 +42,7 @@ gulp.task('build', ['jshint'], function () {
   // 
   gulp.src('./src/*.css')
     .pipe(prefix('last 1 version', '> 1%', 'ie 8', 'ie 7'))
+    .pipe(csscomb('zen'))
     .pipe(header(banner, { pkg: pkg } ))
     .pipe(gulp.dest('./dist/'));
 });
