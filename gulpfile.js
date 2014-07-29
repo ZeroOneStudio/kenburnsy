@@ -6,6 +6,7 @@ var gulp = require('gulp'),
     stylish = require('jshint-stylish'),
     csscomb = require('gulp-csscomb'),
     prefix = require('gulp-autoprefixer'),
+    mochaPhantomJS = require('gulp-mocha-phantomjs'),
     pkg = require('./package.json');
 
 var banner = ['/**',
@@ -22,6 +23,13 @@ gulp.task('jshint', function () {
     .pipe(jshint.reporter(stylish))
     .pipe(jshint.reporter('fail'));
 
+  return stream;
+});
+
+gulp.task('test', function () {
+  var stream = gulp.src('test/runner.html')
+    .pipe(mochaPhantomJS());
+  
   return stream;
 });
 
@@ -47,6 +55,6 @@ gulp.task('build', ['jshint'], function () {
     .pipe(gulp.dest('./dist/'));
 });
 
-gulp.task('default', ['jshint', 'build']);
+gulp.task('default', ['jshint', 'test', 'build']);
 
-gulp.task('travis', ['jshint']);
+gulp.task('travis', ['jshint', 'test']);

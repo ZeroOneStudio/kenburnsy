@@ -8,14 +8,17 @@
     "velocity-animate": "~0.9"
   },
   "devDependencies": {
+    "chai": "^1.9.1",
     "gulp": "^3.8.6",
     "gulp-autoprefixer": "0.0.8",
     "gulp-csscomb": "^3.0.2",
     "gulp-header": "^1.0.5",
     "gulp-jshint": "^1.8.0",
+    "gulp-mocha-phantomjs": "^0.3.0",
     "gulp-rename": "^1.2.0",
     "gulp-uglify": "^0.3.1",
-    "jshint-stylish": "^0.4.0"
+    "jshint-stylish": "^0.4.0",
+    "mocha": "^1.21.3"
   },
   "scripts": {
     "test": "gulp travis"
