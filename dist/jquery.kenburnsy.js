@@ -1,6 +1,6 @@
 /**
  * kenburnsy - Easy to use JQuery plugin to make slideshows with Ken Burns effect
- * @version v0.0.4
+ * @version v0.0.5
  * @link https://github.com/ZeroOneStudio/kenburnsy
  * @license MIT
  */
@@ -77,6 +77,25 @@
 
       return $.Deferred(loader).promise();
     };
+    /**
+     *
+     * Object.keys polyfill
+     *
+    */
+    if (!Object.keys) {
+      Object.keys = function(o) {
+        if (o !== Object(o)) {
+          throw new TypeError('Object.keys called on a non-object');
+        }
+        var k = [], p;
+        for (p in o) {
+          if (Object.prototype.hasOwnProperty.call(o,p)) {
+            k.push(p);
+          }
+        }
+        return k;
+      };
+    }
 
     function Plugin (element, options) {
       this.el = element;
@@ -93,11 +112,10 @@
 
       init: function () {
         var settings = this.settings,
-            imageEls = Array.prototype.slice.call(this.el.children),
             _this = this,
             urls;
 
-        urls = imageEls.map(function (imageEl) { return imageEl.src; });
+        urls = this.$el.children().map(function (index, imageElement) { return imageElement.src; });
 
         this.$el.addClass(function () {
           var classes = [pluginName];
@@ -107,7 +125,7 @@
           return classes.join(' ');
         });
 
-        $.when.apply($, urls.map($preloadImage)).done(function() {
+        $.when.apply($, $.map(urls, $preloadImage)).done(function() {
           var images = Array.prototype.slice.call(arguments);
           _this.buildScene(images);
         });
@@ -176,7 +194,7 @@
       addSlides: function (images) {
         var el = this.el;
 
-        return images.reverse().map(function (url) {
+        return $.map(images.reverse(), function (url) {
           var slide = document.createElement('div');
           slide.style.backgroundImage = 'url(' + url.src + ')';
           slide.className = 'slide';

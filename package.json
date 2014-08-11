@@ -1,6 +1,6 @@
 {
   "name": "kenburnsy",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Easy to use JQuery plugin to make slideshows with Ken Burns effect",
   "main": "dist/jquery.kenburnsy.js",
   "dependencies": {
