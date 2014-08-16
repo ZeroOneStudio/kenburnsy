@@ -51,3 +51,7 @@ gulp.task('build', ['jshint'], function () {
 gulp.task('default', ['jshint', 'test', 'build']);
 
 gulp.task('travis', ['jshint', 'test']);
+
+gulp.task('watch', function() {
+  gulp.watch(['src/*.js', 'test/test.js'], ['jshint', 'test']);
+});
